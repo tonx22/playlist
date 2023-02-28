@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "playlist/pb";
+
+package pb;
+
+// The playlist service definition.
+service PlaylistSvc {
+  rpc Play (PlayRequest) returns (EmptyParams) {}
+  rpc Pause (EmptyParams) returns (EmptyParams) {}
+  rpc Next (EmptyParams) returns (EmptyParams) {}
+  rpc Prev (EmptyParams) returns (EmptyParams) {}
+  rpc AddSong (Song) returns (Song) {}
+  rpc Delete (PlayRequest) returns (EmptyParams) {}
+  rpc GetPlaylist (EmptyParams) returns (PlaylistReply) {}
+}
+
+message EmptyParams{}
+
+message PlayRequest {
+  int32 id = 1;
+}
+
+message Song {
+  int32 id = 1;
+  string description = 2;
+  int32 duration = 3;
+  int32 prev = 4;
+  int32 next = 5;
+}
+
+message PlaylistReply {
+  repeated Song songs = 1;
+}
