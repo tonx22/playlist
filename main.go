@@ -2,18 +2,16 @@ package main
 
 import (
 	"github.com/Netflix/go-env"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	_ "github.com/lib/pq"
 	"github.com/tonx22/playlist/pkg/service"
 	"github.com/tonx22/playlist/pkg/transport"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
-
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
-
-	_ "github.com/lib/pq"
 )
 
 type environment struct {
